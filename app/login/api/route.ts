@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/db/mongodb';
 import { User } from '@/lib/db/models/User';
 
-import { cookies } from 'next/headers';
+
 
 export async function POST(request: Request) {
   const formData = await request.formData();

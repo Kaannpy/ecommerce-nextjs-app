@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCartStore } from "@/store/card-store";
 import { checkoutAction } from "./checkout-action";
-import { json } from "stream/consumers";
 
 export default function CheckoutPage() {
   const { items, removeItem, addItem, clearCart } = useCartStore();
@@ -27,7 +26,7 @@ export default function CheckoutPage() {
             <CardTitle className="text-xl font-bold">Order Summary</CardTitle>
             <CardContent>
               <ul className="space-y-4">
-                {items.map((item, key) => (
+                {items.map((item) => (
                   <li
                     key={item.id}
                     className="flex flex-col gap-2 border-b pb-2"

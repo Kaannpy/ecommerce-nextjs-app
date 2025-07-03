@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
@@ -7,8 +8,9 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-semibold mb-4">About us</h3>
           <p className="text-sm leading-relaxed">
-            "E-Commerce App is a modern platform designed to provide the best
-            shopping experience. It is secure, fast, and user-friendly.
+            &quot;E-Commerce App is a modern platform designed to provide the
+            best shopping experience. It is secure, fast, and
+            user-friendly.&quot;
           </p>
         </div>
 
@@ -16,19 +18,19 @@ export default function Footer() {
           <h3 className="text-lg font-semibold mb-4">Links</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <a href="/" className="hover:text-white transition">
-                Home
-              </a>
+              <Link href="/">
+                <a className="hover:text-white transition">Home</a>
+              </Link>
             </li>
             <li>
-              <a href="/products" className="hover:text-white transition">
-                Products
-              </a>
+              <Link href="/products">
+                <a className="hover:text-white transition">Products</a>
+              </Link>
             </li>
             <li>
-              <a href="/checkout" className="hover:text-white transition">
-                Cart
-              </a>
+              <Link href="/checkout">
+                <a className="hover:text-white transition">Cart</a>
+              </Link>
             </li>
             <li>
               <a href="#" className="hover:text-white transition">
@@ -44,6 +46,7 @@ export default function Footer() {
             <a
               href="https://github.com/Kaannpy"
               target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-white transition"
             >
               <FaGithub />
@@ -51,6 +54,7 @@ export default function Footer() {
             <a
               href="https://www.linkedin.com/in/kaanpey/"
               target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-white transition"
             >
               <FaLinkedin />

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import { Navbar } from "../components/navbar";
-import { User } from "lucide-react";
+
 import { UserProvider } from "@/context/UserContext";
 
 export const metadata: Metadata = {

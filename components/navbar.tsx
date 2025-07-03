@@ -1,4 +1,5 @@
 "use client";
+
 import { useCartStore } from "@/store/card-store";
 import {
   Bars3Icon,
@@ -9,7 +10,7 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
-import { Ghost } from "lucide-react";
+
 import { useRouter } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 
@@ -23,11 +24,11 @@ export const Navbar = () => {
   };
 
   const { items } = useCartStore();
-  //  total  tüm degerler  item ise o anki eleman
   const cardCount = items.reduce((total, item) => total + item.quantity, 0);
   const userContext = useUser();
   const user = userContext?.user;
   const [MobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -35,19 +36,17 @@ export const Navbar = () => {
       }
     };
     window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleLogout = async () => {
-    await fetch("/logout/api", { method: "POST" });
+  // handleLogout fonksiyonunu tanımladık ve kullandık
+  const handleLogout = () => {
     userContext?.setUser && userContext.setUser(null);
   };
 
   return (
-    <nav className="sticky top-0 z-50  bg-white shadow">
-      <div className="container mx-auto flex items-center justify-between  px-4 py-4">
+    <nav className="sticky top-0 z-50 bg-white shadow">
+      <div className="container mx-auto flex items-center justify-between px-4 py-4">
         <Link href={"/"} className="hover:text-blue-600">
           My Ecommerce
         </Link>
@@ -63,6 +62,7 @@ export const Navbar = () => {
             Checkout
           </Link>
         </div>
+
         <div className="flex items-center space-x-4">
           <Link href={"/checkout"} className="relative">
             <ShoppingCartIcon className="h-6 w-6" />
@@ -72,15 +72,11 @@ export const Navbar = () => {
               </span>
             )}
           </Link>
+
           {user ? (
             <>
               <span className="font-semibold">Welcome, {user.name}</span>
-              <Button
-                onClick={() =>
-                  userContext?.setUser && userContext.setUser(null)
-                }
-                variant="outline"
-              >
+              <Button onClick={handleLogout} variant="outline">
                 Log out
               </Button>
             </>
@@ -94,6 +90,7 @@ export const Navbar = () => {
               </Button>
             </>
           )}
+
           <Button
             variant="ghost"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
@@ -121,13 +118,13 @@ export const Navbar = () => {
                 href={"/products"}
                 className="block px-4 py-2 hover:text-blue-600"
               >
-                Product
+                Products
               </Link>
             </li>
             <li>
               <Link
                 href={"/checkout"}
-                className="block px-4 py-2 hover:text-blue-600  "
+                className="block px-4 py-2 hover:text-blue-600"
               >
                 Checkout
               </Link>

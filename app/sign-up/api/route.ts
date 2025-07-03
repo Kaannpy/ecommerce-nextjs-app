@@ -15,13 +15,11 @@ export async function POST(request: Request) {
 
     await connectToDatabase();
 
-    // Kullanıcı var mı kontrol et
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return NextResponse.json({ success: false, error: 'This email is already registered.' });
     }
 
-    // name, email, password ile kaydet
     await User.create({ name, email, password });
 
     return NextResponse.json({ success: true });

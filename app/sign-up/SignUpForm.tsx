@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -174,9 +175,9 @@ export default function SignUpForm() {
         </div>
       )}
       <div className="flex justify-between items-center mt-2 text-sm">
-        <a href="/login" className="text-blue-600 hover:underline">
+        <Link href="/login" className="text-blue-600 hover:underline">
           You already have an account?
-        </a>
+        </Link>
       </div>
     </form>
   );

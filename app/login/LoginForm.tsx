@@ -1,6 +1,7 @@
 "use client";
 
 import { useUser } from "@/context/UserContext";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -146,12 +147,12 @@ export default function LoginForm() {
         </div>
       )}
       <div className="flex justify-between items-center mt-2 text-sm">
-        <a href="#" className="text-blue-600 hover:underline">
+        <Link href="#" className="text-blue-600 hover:underline">
           Forgot your password?
-        </a>
-        <a href="/sign-up" className="text-gray-600 hover:underline">
+        </Link>
+        <Link href="/sign-up" className="text-gray-600 hover:underline">
           Sign up{" "}
-        </a>
+        </Link>
       </div>
     </form>
   );

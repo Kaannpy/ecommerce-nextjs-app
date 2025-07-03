@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  mongo2:
+    image: mongo
+    container_name: mongo2-container
+    ports:
+      - 27018:27017          
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin2
+      - MONGO_INITDB_ROOT_PASSWORD=admin2
+      - MONGO_INITDB_DATABASE=admin2
+    networks:
+      - mongo2-network
+    volumes:
+      - mongo2-data:/data/db
+
+  mongo-express2:
+    image: mongo-express
+    container_name: mongo-express2-container
+    ports:
+      - 8082:8081           
+    environment:
+      - ME_CONFIG_MONGODB_URL=mongodb://admin2:admin2@mongo2:27017/?authSource=admin
+      - ME_CONFIG_BASICAUTH_USERNAME=admin2
+      - ME_CONFIG_BASICAUTH_PASSWORD=admin2
+    networks:
+      - mongo2-network
+
+networks:
+  mongo2-network:
+    driver: bridge
+
+volumes:
+  mongo2-data:
